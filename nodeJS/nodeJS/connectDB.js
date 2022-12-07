@@ -2,11 +2,14 @@ const MongoClient = require("mongodb").MongoClient;
 
 var url = "mongodb://localhost:27017/";
 
-exports.client = function(){MongoClient.connect(url,function(err,db){
-    if(err)
-       throw err;
+const client = new MongoClient(url);
 
-    console.log("connected successfully");
+client.connect(function(err,db){
+    if(err)
+      throw err;
+
+    console.log("connected successfully to server");
 })
-}
+
+module.exports = client;
 
